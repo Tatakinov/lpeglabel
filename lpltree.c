@@ -1386,7 +1386,13 @@ static struct luaL_Reg metareg[] = {
   {NULL, NULL}
 };
 
+#ifdef _WIN32
+__declspec(dllexport)
+#endif // OS
 int luaopen_lpeglabel (lua_State *L);  /* labeled failure */
+#ifdef _WIN32
+__declspec(dllexport)
+#endif // OS
 int luaopen_lpeglabel (lua_State *L) { /* labeled failure */
   luaL_newmetatable(L, PATTERN_T);
   lua_pushnumber(L, MAXBACK);  /* initialize maximum backtracking */
